@@ -6,9 +6,10 @@ import App from "./App.jsx";
 //bootstrap imports
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
+import MainMiddleware from "./features/middleware/MainMiddleware.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
+  <MainMiddleware>
     <App />
-  </StrictMode>
+  </MainMiddleware>
 );
