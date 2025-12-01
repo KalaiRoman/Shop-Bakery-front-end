@@ -1,0 +1,136 @@
+@import '../../media';
+
+.main-login {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+
+    @include res-include(xs) {
+        height: 100vh;
+    }
+
+    .inside-login {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        @include res-include(xs) {
+            flex-direction: column;
+        }
+
+        .left-login {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            @include res-include(xs) {
+                width: 100%;
+            }
+
+            .login-image {
+                width: 80%;
+                cursor: pointer;
+                object-fit: contain;
+                animation: rock 2s infinite;
+                transition: all 0.3s ease;
+            }
+
+
+
+            .circle-1 {
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+                background-color: #1ba672;
+                left: 10px;
+                top: 20px;
+                animation: move1 10s infinite;
+                transition: all 0.10s ease-out;
+                // opacity: 0.5;
+            }
+
+            .circle-2 {
+                position: absolute;
+                width: 120px;
+                height: 120px;
+                // border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+                background-color: #1ba672;
+                right: 0px;
+                bottom: 0px;
+                animation: move2 10s infinite;
+                transition: all 0.10s ease-out;
+                // opacity: 0.5;
+                border-top-left-radius: 100px;
+
+                @include res-include(xs) {
+                    width: 80px;
+                    height: 80px;
+                    display: none;
+
+                }
+            }
+
+            @keyframes move1 {
+
+                0% {
+                    transform: rotate(0);
+                }
+
+                50% {
+                    transform: rotate(360deg);
+                }
+
+                100% {
+                    transform: rotate(0deg);
+                }
+            }
+        }
+
+        .right-login {
+            width: 50%;
+            height: 100%;
+            background-color: white;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+            border-top-left-radius: 40px;
+            border-bottom-left-radius: 40px;
+            padding: 20px;
+
+
+            @include res-include(xs) {
+                width: 100%;
+                border-bottom-left-radius: 0px;
+                border-top-right-radius: 40px;
+            }
+
+            .right-login-form {
+                width: 60%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                margin: 0 auto;
+                padding-top: 80px;
+
+                @include res-include(xs) {
+                    width: 90%;
+                }
+
+                .password-input-icon {
+                    position: relative;
+
+                    .password-icon {
+                        position: absolute;
+                        top: 66%;
+                        right: 13px;
+                    }
+                }
+            }
+        }
+    }
+
+}

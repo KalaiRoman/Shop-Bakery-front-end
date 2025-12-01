@@ -1,17 +1,12 @@
-import React, { useEffect } from "react";
-import { findMethod, includesMethod } from "./helpers/methods/Methods";
+import React from 'react'
+import Routers from './routers/Routers'
+import './App.scss';
 function App() {
-  const arr = [10, 20, 30];
-
-  useEffect(() => {
-    const check = findMethod(arr, "", 10);
-
-    console.log("Includes Method Check:", check);
-  }, []);
-  return <div className="text-danger">
-
-    {includesMethod(arr, 10)?"true":"false"}
-  </div>;
+  return (
+    <div>
+      <Routers/>
+    </div>
+  )
 }
 
-export default App;
+export default App

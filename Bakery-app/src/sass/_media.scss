@@ -1,3 +1,25 @@
+// $breakPoints: (xs: 375px,
+//   sm: 600px,
+//   md: 800px,
+//   lg: 1000px,
+//   xl: 1200px,
+//   xxl: 1360px);
+
+// @mixin res-include($breakPoint) {
+//   @if map-has-key($breakPoints, $breakPoint) {
+//     $size: map-get($breakPoints, $breakPoint);
+
+//     @media (max-width: $size) {
+//       @content;
+//     }
+//   }
+
+//   @else {
+//     @warn "⚠️ Breakpoint `#{$breakPoint}` not found in $breakPoints map.";
+//   }
+// }
+
+
 $breakPoints: (xs: 375px,
   sm: 600px,
   md: 800px,
@@ -5,16 +27,31 @@ $breakPoints: (xs: 375px,
   xl: 1200px,
   xxl: 1360px);
 
-@mixin responsed-to($breakPoint) {
-  @if map-has-key($breakPoints, $breakPoint) {
-    $size: map-get($breakPoints, $breakPoint);
+@mixin res-include($breakPoint) {
+  $keys: map-keys($breakPoints);
+  $index: index($keys, $breakPoint);
 
-    @media (max-width: $size) {
-      @content;
-    }
+  @if $index==null {
+    @warn "⚠️ Breakpoint `#{$breakPoint}` not found in map.";
   }
 
   @else {
-    @warn "⚠️ Breakpoint `#{$breakPoint}` not found in $breakPoints map.";
+    $min-size: map-get($breakPoints, $breakPoint);
+    $next-index: $index + 1;
+
+    @if $next-index <=length($keys) {
+      $next-key: nth($keys, $next-index);
+      $max-size: map-get($breakPoints, $next-key);
+
+      @media (min-width: $min-size) and (max-width: $max-size) {
+        @content;
+      }
+    }
+
+    @else {
+      @media (min-width: $min-size) {
+        @content;
+      }
+    }
   }
 }
