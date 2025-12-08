@@ -11,4 +11,13 @@ const registerFormInitialState = {
   avatar: null,
 };
 
-export { LoginFormInitialState, registerFormInitialState };
+const ProductFormInitialState = {
+  productName: "",
+  category: "",
+  price: "",
+  description: "",
+  productimage: null,
+  quantity: "",
+};
+
+export { LoginFormInitialState, registerFormInitialState,ProductFormInitialState };

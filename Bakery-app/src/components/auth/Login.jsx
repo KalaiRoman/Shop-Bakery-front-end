@@ -8,21 +8,36 @@ import Hoc from "../../HOC/Hoc";
 import { navigateMethod } from "../../helpers/functionMethods/Methods";
 import { Navigate } from "react-router-dom";
 import { setToken } from "../../helpers/tokens/Tokens";
+import {
+  CustomToasterOptions,
+  ToastSaveMessage,
+} from "../../helpers/ToasterMessages/ToaserMessage";
 function Login({ props }) {
   // useEffect(() => {
   //   ToastMessageSucess("welcome");
-  //   ToastSaveMessage(null, true, saveSettings("settings"));
+
   //   CustomToasterOptions("kalak");
   // }, []);
 
   const [user, setUser] = useState(LoginFormInitialState);
+  const [loading, setLoading] = useState(false);
   const { email, password } = user;
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
-  const handlesubmit = (e) => {
-    e.preventDefault();
-    setToken("kalai")
+  const handlesubmit = async (e) => {
+    setLoading(true);
+    try {
+      e.preventDefault();
+      setToken("kalai");
+      CustomToasterOptions("Login Successfully...");
+      setTimeout(() => {
+        props.navigate("/dashboard");
+        setLoading(false);
+      }, 2000);
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   const signupPage = () => {
@@ -63,7 +78,12 @@ function Login({ props }) {
               </div>
 
               <div className="mt-4">
-                <Button title="Login" className="login-btn" onClick={handlesubmit}></Button>
+                <Button
+                  title="Login"
+                  className="login-btn"
+                  onClick={handlesubmit}
+                  loading={loading}
+                ></Button>
               </div>
               <div className="mt-4 text-center label">or Create an account</div>
               <div className="mt-4 text-center">

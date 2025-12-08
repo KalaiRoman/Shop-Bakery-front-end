@@ -28,18 +28,26 @@ const saveSettings = (value) => {
   });
 };
 
-const CustomToasterOptions = () => {
+const CustomToasterOptions = (message, images) => {
   toast((t) => (
-    <span>
-      Custom and <b>bold</b> thala mani
-      <img
-        src={
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLe5PABjXc17cjIMOibECLM7ppDwMmiDg6Dw&s"
-        }
-        alt="no image"
-      />
-      <button onClick={() => toast.dismiss(t.id)}>Dismiss</button>
-    </span>
+    <div className="custom-message">
+      <div>
+        <img
+          src={
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLe5PABjXc17cjIMOibECLM7ppDwMmiDg6Dw&s"
+          }
+          alt="no image"
+          className="user-image"
+        />
+      </div>
+      <div>
+        <div>{message} <span className="text-success"><i class="fa-solid fa-circle-check"></i></span></div>
+      </div>
+
+      <div className="close-icon" onClick={() => toast.dismiss(t.id)}>
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+    </div>
   ));
 };
 
@@ -50,3 +58,4 @@ export {
   saveSettings,
   CustomToasterOptions,
 };
+

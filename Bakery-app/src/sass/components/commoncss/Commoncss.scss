@@ -1,0 +1,56 @@
+@import '../../media';
+
+.custom-message {
+    width: 300px;
+    display: flex;
+    gap: 20px;
+    position: relative;
+    align-items: center;
+
+    .user-image {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .close-icon {
+        position: absolute;
+        right: 10px;
+        top: 0px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+}
+
+
+
+.flex-end
+{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.icon
+{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1ba672;
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.c-body
+{
+    width: 100%;
+    height: 100vh;
+}
+
+.g-text
+{
+    color: #1ba672;
+}

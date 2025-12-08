@@ -6,6 +6,7 @@ function Hoc(WrappedComponent) {
   return (props) => {
     const token = getToken();
     const navigate = useNavigate();
+    
     const paramsData = {
       navigate: navigate,
       token: token,
